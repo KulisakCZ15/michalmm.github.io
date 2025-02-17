@@ -3,110 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muzeum</title>
+    <title>Seznam filmů</title>
     <style>
-        @font-face {
-            font-family: 'Horizon';
-            src: url('Horizon-Bold.otf') format('opentype');
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background: url('background.jpg') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            overflow: hidden;
-        }
-        .title {
-            font-family: 'Horizon', sans-serif;
-            font-size: 64px;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
-        }
-        .gallery-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 80%;
-        }
-        .gallery img {
-            width: 600px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-            transition: opacity 0.3s ease;
-            border: 5px solid white;
-        }
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 24px;
-            border-radius: 5px;
-        }
-        .arrow:hover {
-            background: rgba(255, 255, 255, 0.5);
-            color: black;
-        }
-        .left {
-            left: 10px;
-        }
-        .right {
-            right: 10px;
-        }
+        body { font-family: Arial, sans-serif; }
+        .movie { display: flex; align-items: center; margin-bottom: 10px; cursor: pointer; }
+        img { width: 100px; margin-right: 10px; transition: 0.3s; }
+        img:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
-    <div class="title">Muzeum</div>
-    <div class="gallery-container">
-        <button class="arrow left" onclick="prevImage()">&#9665;</button>
-        <img id="gallery-image" src="/pics/obrazek1.jpg" alt="Obrázek 1">
-        <button class="arrow right" onclick="nextImage()">&#9655;</button>
-    </div>
+
+    <h1>Seznam filmů</h1>
+    <div id="movies"></div>
+
     <script>
-        const images = [
-            '../assets/obrazek1.jpg',
-            '../assets/obrazek2.jpg',
-            '../assets/obrazek3.jpg',
-            '../assets/obrazek4.jpg',
-            '../assets/obrazek5.jpg',
-            '../assets/obrazek6.jpg'
+        // Seznam filmů s odkazy na video soubory
+        const movies = [
+            {
+                "title": "Interstellar",
+                "year": 2014,
+                "poster": "https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
+                "video": "https://www.example.com/interstellar.mp4"
+            },
+            {
+                "title": "Inception",
+                "year": 2010,
+                "poster": "https://image.tmdb.org/t/p/w500/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
+                "video": "https://www.example.com/inception.mp4"
+            }
         ];
-        let currentIndex = 0;
-        const galleryImage = document.getElementById('gallery-image');
-        
-        function updateImage() {
-            galleryImage.style.opacity = 0;
-            setTimeout(() => {
-                galleryImage.src = images[currentIndex];
-                galleryImage.style.opacity = 1;
-            }, 200);
-        }
-        function prevImage() {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-            updateImage();
-        }
-        function nextImage() {
-            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-            updateImage();
-        }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevImage();
-            if (e.key === 'ArrowRight') nextImage();
+
+        // Zobrazení filmů
+        const container = document.getElementById('movies');
+        movies.forEach(movie => {
+            const div = document.createElement('div');
+            div.classList.add('movie');
+            div.innerHTML = `
+                <img src="${movie.poster}" alt="${movie.title}">
+                <p><strong>${movie.title}</strong> (${movie.year})</p>
+            `;
+            div.addEventListener('click', () => {
+                window.location.href = movie.video; // Otevře film v novém okně
+            });
+            container.appendChild(div);
         });
     </script>
+
 </body>
 </html>
