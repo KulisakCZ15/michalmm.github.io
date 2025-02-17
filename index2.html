@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seznam filmů</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .movie { display: flex; align-items: center; margin-bottom: 10px; }
+        img { width: 100px; margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Seznam filmů</h1>
+    <div id="movies"></div>
+
+    <script>
+        // Filmy přímo v JavaScriptu
+        const movies = [
+            {
+                "title": "Interstellar",
+                "year": 2014,
+                "poster": "https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"
+            },
+            {
+                "title": "Inception",
+                "year": 2010,
+                "poster": "https://image.tmdb.org/t/p/w500/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg"
+            }
+        ];
+
+        // Zobrazit filmy na stránce
+        const container = document.getElementById('movies');
+        movies.forEach(movie => {
+            const div = document.createElement('div');
+            div.classList.add('movie');
+            div.innerHTML = `
+                <img src="${movie.poster}" alt="${movie.title}">
+                <p><strong>${movie.title}</strong> (${movie.year})</p>
+            `;
+            container.appendChild(div);
+        });
+    </script>
+
+</body>
+</html>
 
