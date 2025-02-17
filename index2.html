@@ -5,31 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seznam filmů</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .movie { display: flex; align-items: center; margin-bottom: 10px; cursor: pointer; }
-        img { width: 100px; margin-right: 10px; transition: 0.3s; }
-        img:hover { transform: scale(1.1); }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #1e1e1e;
+            color: white;
+        }
+        .movie {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        img {
+            width: 150px;
+            margin-right: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        select {
+            margin: 10px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
 
     <h1>Seznam filmů</h1>
+
+    <label>Vyber pozadí: 
+        <select id="bgColor">
+            <option value="#1e1e1e">Tmavé</option>
+            <option value="white">Světlé</option>
+            <option value="blue">Modré</option>
+        </select>
+    </label>
+
+    <label>Vyber barvu textu: 
+        <select id="textColor">
+            <option value="white">Bílá</option>
+            <option value="black">Černá</option>
+            <option value="red">Červená</option>
+        </select>
+    </label>
+
     <div id="movies"></div>
 
     <script>
-        // Seznam filmů s odkazy na video soubory
+        // Seznam filmů
         const movies = [
             {
-                "title": "fall",
+                "title": "Interstellar",
                 "year": 2014,
-                "poster": "",
-                "video": "https://www.youtube.com/watch?v=lzLkEfGwbw0&ab_channel=M%C5%AFjfilmov%C3%BDsv%C4%9Bt"
+                "poster": "https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
+                "file": "https://www.example.com/interstellar.mp4"
             },
             {
                 "title": "Inception",
                 "year": 2010,
                 "poster": "https://image.tmdb.org/t/p/w500/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
-                "video": "https://www.example.com/inception.mp4"
+                "file": "https://www.example.com/inception.mp4"
             }
         ];
 
@@ -42,10 +81,19 @@
                 <img src="${movie.poster}" alt="${movie.title}">
                 <p><strong>${movie.title}</strong> (${movie.year})</p>
             `;
-            div.addEventListener('click', () => {
-                window.location.href = movie.video; // Otevře film v novém okně
+            div.addEventListener("click", () => {
+                window.open(movie.file, "_blank");
             });
             container.appendChild(div);
+        });
+
+        // Změna pozadí a barvy textu
+        document.getElementById("bgColor").addEventListener("change", function() {
+            document.body.style.backgroundColor = this.value;
+        });
+
+        document.getElementById("textColor").addEventListener("change", function() {
+            document.body.style.color = this.value;
         });
     </script>
 
