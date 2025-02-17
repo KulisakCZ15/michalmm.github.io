@@ -124,15 +124,5 @@
         <h2 class="category-title">Nejnovější skibidi video</h2>
         <iframe id="youtube-video" src="" allowfullscreen></iframe>
     </div>
-    <script>
-        fetch('https://www.googleapis.com/youtube/v3/search?key=AIzaSyB6K834RsPjWABqzDYfiElIxds_KVRcCcw&channelId=UC6h8MA7c92OfezqVOm1fXxg&order=date&part=snippet&type=video')
-            .then(response => response.json())
-            .then(data => {
-                if (data.items.length > 0) {
-                    document.getElementById('youtube-video').src = "https://www.youtube.com/embed/" + data.items[0].id.videoId;
-                }
-            })
-            .catch(error => console.error('Chyba při načítání videa:', error));
-    </script>
 </body>
 </html>
