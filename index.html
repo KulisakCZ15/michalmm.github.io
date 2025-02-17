@@ -18,7 +18,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 1vh;
+            min-height: 100vh;
             background: url('background.jpg') no-repeat center center/cover;
             backdrop-filter: blur(20px);
             background-color: #000000;
@@ -68,25 +68,6 @@
             transform: scale(1.1);
             box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
         }
-        
-        .button-portfolio {
-            background: linear-gradient(45deg, #FFD700, #DAA520);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
-        }
-        .button-youtube {
-            background: linear-gradient(45deg, #FF0000, #B22222);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
-        }
-        .button-muzeum {
-            background: linear-gradient(45deg, #00d4ff, #006eff);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.7);
-        }
-        .category-title {
-            font-size: 4vw;
-            font-weight: bold;
-            margin-bottom: 4vw;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
         @media (max-width: 768px) {
             .button-container {
                 flex-direction: column;
@@ -98,16 +79,17 @@
             .title {
                 font-size: 10vw;
             }
-            .category-title {
-                font-size: 6vw;
-            }
         }
     </style>
 </head>
 <body>
     <div class="title">films</div>
     <div class="button-container">
-        <a href="index2.html" class="button button-videa" target="_blank">videa</a>
+        <a href="index2.html" class="button button-videa" target="_blank">Videa</a>
+        <a href="films/film1.mp4" class="button" target="_blank">Film 1</a>
+        <a href="films/film2.mp4" class="button" target="_blank">Film 2</a>
+        <a href="films/film3.mp4" class="button" target="_blank">Film 3</a>
+        <a href="films/film4.mp4" class="button" target="_blank">Film 4</a>
     </div>
 </body>
 </html>
