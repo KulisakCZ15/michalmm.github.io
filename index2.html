@@ -3,34 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seznam filmů</title>
+    <title>films</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .movie { display: flex; align-items: center; margin-bottom: 10px; cursor: pointer; }
-        img { width: 100px; margin-right: 10px; transition: 0.3s; }
-        img:hover { transform: scale(1.1); }
-    </style>
-</head>
-<body>
-    <h1>Seznam filmů</h1>
-    <div id="movies"></div>
-
-    <script>
-        // Seznam filmů s odkazy na video soubory
-        const movies = [
-            {
-                "title": "Interstellar",
-                "year": 2014,
-                "poster": "https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
-                "video": "https://www.example.com/interstellar.mp4"
-            },
-            {
-                "title": "Inception",
-                "year": 2010,
-                "poster": "https://image.tmdb.org/t/p/w500/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
-                "video": "https://www.example.com/inception.mp4"
+        @font-face {
+            font-family: 'Horizon';
+            src: url('Horizon-Bold.otf') format('opentype');
+            font-weight: bold;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 1vh;
+            background: url('background.jpg') no-repeat center center/cover;
+            backdrop-filter: blur(20px);
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        .title {
+            font-family: 'Horizon', sans-serif;
+            font-size: 8vw;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 5vw;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+        .container {
+            text-align: center;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .button {
+            display: inline-block;
+            width: 80%;
+            max-width: 240px;
+            padding: 15px;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.4s;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            font-family: 'Horizon', sans-serif;
+        }
+        .button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
+        }
+        
+        .button-portfolio {
+            background: linear-gradient(45deg, #FFD700, #DAA520);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        }
+        .button-youtube {
+            background: linear-gradient(45deg, #FF0000, #B22222);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+        }
+        .button-muzeum {
+            background: linear-gradient(45deg, #00d4ff, #006eff);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.7);
+        }
+        .category-title {
+            font-size: 4vw;
+            font-weight: bold;
+            margin-bottom: 4vw;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
             }
-        ];
+            .button {
+                width: 90%;
+                font-size: 18px;
+            }
+            .title {
+                font-size: 10vw;
+            }
+            .category-title {
+                font-size: 6vw;
+            }
+        }
 
         // Zobrazení filmů
         const container = document.getElementById('movies');
