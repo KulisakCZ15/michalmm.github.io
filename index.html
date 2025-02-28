@@ -10,22 +10,38 @@
             src: url('Horizon-Bold.otf') format('opentype');
             font-weight: bold;
         }
-        
-        body {
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            background: href="6lrAkagfns.mp4";
-            backdrop-filter: blur(0px);
-            background-color: #000000;
+            background-color: #000;
             color: white;
             text-align: center;
             overflow: hidden;
+            position: relative;
         }
+
+        /* Video na pozadí */
+        .background-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
         .title {
             font-family: 'Horizon', sans-serif;
             font-size: 8vw;
@@ -35,9 +51,7 @@
             text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
             text-align: center;
         }
-        .container {
-            text-align: left;
-        }
+
         .button-container {
             display: flex;
             flex-direction: column;
@@ -47,6 +61,7 @@
             padding-left: 5vw;
             width: 100%;
         }
+
         .button {
             display: inline-block;
             width: 240px;
@@ -65,11 +80,13 @@
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
             font-family: 'Horizon', sans-serif;
         }
+
         .button:hover {
             background: rgba(255, 255, 255, 0.25);
             transform: scale(1.1);
             box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
         }
+
         @media (max-width: 768px) {
             .button-container {
                 align-items: center;
@@ -85,9 +102,17 @@
     </style>
 </head>
 <body>
+
+    <!-- Video na pozadí -->
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="6lrAkagfns.mp4" type="video/mp4">
+    </video>
+
     <div class="title">michalmm</div>
+    
     <div class="button-container">
         <a href="http://192.168.1.104:8096/web/index.html#/movies.html?topParentId=8f01ecb48aebf0004f05622a1dddfdfc&collectionType=movies" class="button" target="_blank">filmy</a>
     </div>
+
 </body>
 </html>
